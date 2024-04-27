@@ -9,14 +9,14 @@ namespace PartialViewsExample.Controllers
         public IActionResult Index()
         {
 
-            ListModel Listmodel = new ListModel();
-            Listmodel.ListTitle = "List of Items";
-            Listmodel.ListItems = new List<string>()
-            {
-                "New York", "Egypt" , "Iraq"
-            };
+            //ListModel Listmodel = new ListModel();
+            //Listmodel.ListTitle = "List of Items";
+            //Listmodel.ListItems = new List<string>()
+            //{
+            //    "New York", "Egypt" , "Iraq"
+            //};
 
-           return View(Listmodel);
+           return View();
         }
 
         [Route("about")]
@@ -30,6 +30,24 @@ namespace PartialViewsExample.Controllers
                 "Masr", "Qena" , "Sohag"
             };
             return View(Listmodel);
+        }
+        [Route("Programming-Languages")]
+        public IActionResult ProgrammingLanguages()
+        {
+            ListModel listModel = new ListModel()
+            {
+                ListTitle = "Programming Languages List",
+                ListItems = new List<string>()
+                {
+                    "Python",
+                    "C++",
+                    "C#"
+                }
+            };
+            return PartialView("_ListPartialView", listModel);
+            
+            // or this
+            // return new PartialViewResult() { ViewName = "_ListPartialView", Model = listModel };
         }
     }
 }
