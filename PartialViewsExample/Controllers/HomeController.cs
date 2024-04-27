@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PartialViewsExample.Models;
 
 namespace PartialViewsExample.Controllers
 {
@@ -7,29 +8,28 @@ namespace PartialViewsExample.Controllers
         [Route("/")]
         public IActionResult Index()
         {
-            ViewData["ListTitle"] = "Cities";
-            ViewData["ListItems"] = new List<string>()
+
+            ListModel Listmodel = new ListModel();
+            Listmodel.ListTitle = "List of Items";
+            Listmodel.ListItems = new List<string>()
             {
-                "Paris",
-                "New York",
-                "New Mumbai",
-                "Rome"
+                "New York", "Egypt" , "Iraq"
             };
-            return View();
+
+           return View(Listmodel);
         }
 
         [Route("about")]
         public IActionResult About()
         {
-            ViewData["ListTitle"] = "Cities";
-            ViewData["ListItems"] = new List<string>()
+
+            ListModel Listmodel = new ListModel();
+            Listmodel.ListTitle = "List of Items";
+            Listmodel.ListItems = new List<string>()
             {
-                "Paris",
-                "New York",
-                "New Mumbai",
-                "Rome"
+                "Masr", "Qena" , "Sohag"
             };
-            return View();
+            return View(Listmodel);
         }
     }
 }
